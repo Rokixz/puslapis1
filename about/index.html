@@ -1,43 +1,165 @@
 ---
 layout: default
-title: About Us
+title: Home
 ---
 
-<div class="page-hero">
-  <h1>About BuildMaster</h1>
-  <p>18 years of building excellence across Lithuania and the Baltics</p>
-</div>
-
-<section class="section">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="Construction team at work">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Since 2005 · Lithuania</span>
+    <h1>We <em>Build</em><br>The Future</h1>
+    <p>Full-cycle construction management — from residential homes to large commercial developments. Built on trust, delivered on time.</p>
+    <div class="hero-actions">
+      <a href="{{ site.baseurl }}/contact/" class="btn-primary">Get Free Quote</a>
+      <a href="{{ site.baseurl }}/projects/" class="btn-outline">View Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">18+</div>
+        <div class="stat-label">Years of Experience</div>
       </div>
       <div>
-        <span class="section-tag">Our Story</span>
-        <h2 class="section-title">Founded on Craftsmanship</h2>
-        <p style="color:#666; margin-bottom:1rem;">BuildMaster was established in 2005 by a team of engineers and architects with a shared vision: to bring world-class construction standards to Lithuania. From our first small renovation project in Vilnius Old Town, we've grown into one of the region's most trusted construction firms.</p>
-        <p style="color:#666; margin-bottom:2rem;">Today our team of 80+ professionals handles everything from luxury residential builds to complex commercial developments, always holding our work to the highest standard.</p>
+        <div class="stat-num">320+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div>
+        <div class="stat-num">95%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="about-values">
-          <div class="value-item">
-            <h4>🔨 Quality</h4>
-            <p>Premium materials and meticulous workmanship on every project.</p>
-          </div>
-          <div class="value-item">
-            <h4>🤝 Integrity</h4>
-            <p>Transparent pricing, honest timelines, no surprises.</p>
-          </div>
-          <div class="value-item">
-            <h4>🌱 Sustainability</h4>
-            <p>Eco-friendly building practices and green certifications.</p>
-          </div>
-          <div class="value-item">
-            <h4>💡 Innovation</h4>
-            <p>Latest technologies and modern construction methods.</p>
-          </div>
+<!-- SERVICES -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-tag">What We Do</span>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-sub">From groundwork to finishing touches, we cover every phase of construction with expert teams and premium materials.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>Residential Construction</h3>
+        <p>Custom homes, renovations and extensions built to your exact specifications and budget.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Commercial Projects</h3>
+        <p>Office buildings, retail spaces and industrial facilities — delivered on schedule.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Renovation & Fit-Out</h3>
+        <p>Interior and exterior renovations that transform your existing space with minimal disruption.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📐</div>
+        <h3>Project Management</h3>
+        <p>End-to-end project oversight — planning, permitting, procurement and site coordination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT PROJECTS -->
+<section class="section" style="background: var(--light-gray); padding-top: 4rem;">
+  <div class="section-inner">
+    <span class="section-tag">Portfolio</span>
+    <h2 class="section-title">Recent Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Residential Villa">
+        <div class="project-overlay">
+          <span>Residential</span>
+          <h3>Modern Villa Antakalnis</h3>
         </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="Office Building">
+        <div class="project-overlay">
+          <span>Commercial</span>
+          <h3>Office Park Šnipiškės</h3>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Renovation">
+        <div class="project-overlay">
+          <span>Renovation</span>
+          <h3>Old Town Apartments</h3>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="{{ site.baseurl }}/projects/" class="btn-primary">View All Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO SLIDESHOW -->
+<section class="section slideshow-section">
+  <div class="section-inner">
+    <span class="section-tag">Our Work in Photos</span>
+    <h2 class="section-title">From the Construction Site</h2>
+  </div>
+  <div class="slideshow">
+    <div class="slideshow-track" id="slideshowTrack">
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80" alt="Construction site">
+        <div class="slide-caption">Foundation Work — Vilnius, 2024</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&q=80" alt="Building frame">
+        <div class="slide-caption">Steel Frame Assembly — Kaunas, 2023</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80" alt="Finished villa">
+        <div class="slide-caption">Completed Villa — Antakalnis, 2023</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80" alt="Office building">
+        <div class="slide-caption">Office Complex — Šnipiškės, 2023</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80" alt="Renovation">
+        <div class="slide-caption">Old Town Renovation — Vilnius, 2022</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80" alt="Eco home">
+        <div class="slide-caption">Eco Family Home — Trakai, 2022</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="slide-btn slide-prev" id="slidePrev" aria-label="Previous">&#8592;</button>
+    <button class="slide-btn slide-next" id="slideNext" aria-label="Next">&#8594;</button>
+
+    <!-- Dots -->
+    <div class="slide-dots" id="slideDots"></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section section-dark">
+  <div class="section-inner">
+    <span class="section-tag">Why BuildMaster</span>
+    <h2 class="section-title light">Built on Results</h2>
+    <p class="section-sub" style="color:#888;">We don't just build structures — we build lasting relationships based on transparency, quality, and on-time delivery.</p>
+    <div class="services-grid">
+      <div class="service-card" style="background:#1e1e1e; border-bottom-color: transparent;">
+        <div class="service-icon">⏱️</div>
+        <h3 style="color:var(--white)">On-Time Delivery</h3>
+        <p>98% of our projects completed on or before the deadline. We respect your time and budget.</p>
+      </div>
+      <div class="service-card" style="background:#1e1e1e;">
+        <div class="service-icon">🏆</div>
+        <h3 style="color:var(--white)">Award-Winning Quality</h3>
+        <p>Multiple Lithuanian construction excellence awards. Every detail matters to us.</p>
+      </div>
+      <div class="service-card" style="background:#1e1e1e;">
+        <div class="service-icon">🔒</div>
+        <h3 style="color:var(--white)">Fully Insured & Licensed</h3>
+        <p>All work is covered under comprehensive insurance with full regulatory compliance.</p>
       </div>
     </div>
   </div>
