@@ -1,0 +1,26 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ site.baseurl }}/" class="logo">
+      <span class="logo-icon">⬛</span>
+      <span class="logo-text">BUILD<strong>MASTER</strong></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        {% for item in site.nav %}
+        <li>
+          <a href="{{ site.baseurl }}{{ item.url }}" 
+             class="{% if page.url == item.url %}active{% endif %}">
+            {{ item.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ site.baseurl }}/contact/" class="btn-cta">Get a Quote</a>
+    </nav>
+  </div>
+</header>
