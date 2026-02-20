@@ -127,7 +127,7 @@ ul { list-style: none; }
   max-width: 500px; margin-bottom: 2.5rem;
 }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero-actions a { text-align: center; flex: 1 1 160px; }
+.hero-actions a { text-align: center; flex: 1 1 120px; }
 .btn-primary {
   background: var(--gold); color: var(--black);
   font-weight: 700; font-size: 0.9rem;
