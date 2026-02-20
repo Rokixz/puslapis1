@@ -1,3 +1,25 @@
-theme: jekyll-theme-minimal
-title: Octocat's homepage
-description: Bookmark this to keep an eye on my project updates!
+title: BuildMaster Construction
+description: Professional construction & development services
+baseurl: "/puslapis1"
+url: "https://rokixz.github.io"
+
+# Build settings
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-relative-links
+
+# Navigation
+nav:
+  - title: Home
+    url: /
+  - title: About Us
+    url: /about/
+  - title: Services
+    url: /services/
+  - title: Projects
+    url: /projects/
+  - title: Team
+    url: /team/
+  - title: Contact
+    url: /contact/
