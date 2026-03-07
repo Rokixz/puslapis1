@@ -95,7 +95,7 @@ ul { list-style: none; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+  background: url('https://github.com/Rokixz/puslapis1/blob/main/_includes/641330327_122102187273272904_3643776223292547557_n_upscayl_2x_upscayl-lite-4x.png?raw=true?w=1600&q=80') center/cover no-repeat;
   opacity: 0.25;
 }
 .hero-bg::after {
