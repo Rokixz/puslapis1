@@ -87,7 +87,7 @@ ul { list-style: none; }
 
 /* ===== HERO ===== */
 .hero {
-  min-height: 100vh;
+  min-height: 120vh;
   background: var(--black);
   display: flex; align-items: center;
   position: relative; overflow: hidden;
