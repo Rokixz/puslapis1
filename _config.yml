@@ -13,7 +13,7 @@ plugins:
 nav:
   - title: Pradžia
     url: /
-  - title: Apie Mus
+  - title: Apie
     url: /about/
   - title: Paslaugos
     url: /services/
