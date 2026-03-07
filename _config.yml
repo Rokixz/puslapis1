@@ -19,7 +19,7 @@ nav:
     url: /services/
   - title: Projektai
     url: /projects/
-  - title: Komanda
-    url: /team/
+  # - title: Komanda
+  #   url: /team/
   - title: Kontaktai
     url: /contact/
