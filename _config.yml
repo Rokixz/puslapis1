@@ -1,5 +1,5 @@
-title: BuildMaster Construction
-description: Professional construction & development services
+title: STOGUASAI Statyba
+description: Profesionalios statybos ir plėtros paslaugos
 baseurl: "/puslapis1"
 url: "https://rokixz.github.io"
 
@@ -11,15 +11,15 @@ plugins:
 
 # Navigation
 nav:
-  - title: Home
+  - title: Pradžia
     url: /
-  - title: About
+  - title: Apie Mus
     url: /about/
-  - title: Services
+  - title: Paslaugos
     url: /services/
-  - title: Projects
+  - title: Projektai
     url: /projects/
-  - title: Team
+  - title: Komanda
     url: /team/
-  - title: Contact
+  - title: Kontaktai
     url: /contact/
