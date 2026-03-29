@@ -56,8 +56,17 @@ ul { list-style: none; }
   background-repeat: no-repeat;
   width: 1.2rem; height: 1.2rem; */
 }
-.logo-text { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.05em; color: var(--white); }
-.logo-text strong { color: var(--gold); }
+.logo-text { 
+  font-family: var(--font-display); 
+  font-size: 1.6rem; 
+  letter-spacing: 0.05em; 
+  color: var(--white);
+  position: relative;
+  left: clamp(2rem, 5vw, 45px);
+}
+.logo-text strong { 
+  color: var(--gold); 
+}
 
 .main-nav ul {
   display: flex; gap: 0.25rem;
