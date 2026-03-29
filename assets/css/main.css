@@ -474,7 +474,7 @@ ul { list-style: none; }
   position: relative;
   overflow: hidden;
   background: var(--black);
-  max-height: 560px;
+  max-height: 760px;
 }
 .slideshow-track {
   display: flex;
