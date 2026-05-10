@@ -925,12 +925,14 @@ ul { list-style: none; }
 
   .service-item {
     flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 0.8rem;
   }
 
   .service-item .service-icon {
     margin-top: 0;
+    flex-shrink: 0;
   }
 }
 @media (max-width: 768px) {
@@ -942,9 +944,12 @@ ul { list-style: none; }
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-h));
     background: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     transform: translateX(100%);
