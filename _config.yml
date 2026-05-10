@@ -1,7 +1,11 @@
 title: STOGUASAI Statyba
-description: Profesionalios statybos ir plėtros paslaugos
+description: Profesionalios statybos ir plėtros paslaugos Lietuvoje - nuo gyvenamųjų namų iki komercinių projektų
+author: STOGUASAI
 baseurl: "/"
 url: "https://stoguasai.lt"
+email: info@stoguasai.lt
+phone: "+37060640590"
+address: "Šiauliai, Lietuva"
 
 # Build settings
 markdown: kramdown
@@ -19,7 +23,7 @@ nav:
     url: /services/
   - title: Projektai
     url: /projects/
-  # - title: Komanda
-  #   url: /team/
+  - title: Komanda
+    url: /team/
   - title: Kontaktai
     url: /contact/

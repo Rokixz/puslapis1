@@ -1,0 +1,19 @@
+# STOGUASAI.LT Robots Configuration
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Allow: /assets/
+
+# Specific rules for different search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://stoguasai.lt/sitemap.xml
