@@ -249,3 +249,17 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
 }
 
+// ===== LIGHTBOX INITIALIZATION =====
+document.addEventListener('DOMContentLoaded', () => {
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: true,
+    cssEfects: {
+      fade: true,
+      zoom: true,
+      slide: false
+    }
+  });
+});
