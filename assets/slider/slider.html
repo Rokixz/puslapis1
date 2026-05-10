@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Image Slider</title>
+  <style>
+    /* ── Reset & base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0d0d0d;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: #f0ebe3;
+    }
+
+    h1 {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(240,235,227,0.55);
+      margin-bottom: 2.4rem;
+    }
+
+    /* ── Slider wrapper ───────────────────────────── */
+    .slider-wrap {
+      position: relative;
+      width: min(92vw, 900px);
+      aspect-ratio: 16 / 8;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,.4),
+        0 8px 32px rgba(0,0,0,.6),
+        0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    /* ── Track (holds all slides side by side) ────── */
+    .slider-track {
+      display: flex;
+      height: 100%;
+      will-change: transform;
+      transition: transform 0.72s cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    /* ── Individual slide ─────────────────────────── */
+    .slide {
+      flex: 0 0 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      /* Subtle Ken-Burns when active */
+      transition: transform 6s ease;
+      transform: scale(1.04);
+    }
+
+    .slide.active img {
+      transform: scale(1);
+    }
+
+    /* ── Caption ──────────────────────────────────── */
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.2rem 2rem 1.4rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.68));
+      font-size: clamp(0.78rem, 1.6vw, 1rem);
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.88);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s 0.3s ease, transform 0.5s 0.3s ease;
+    }
+
+    .slide.active .caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Prev / Next arrows ───────────────────────── */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 50%;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      color: #fff;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    .arrow:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.7);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .arrow.prev { left: 14px; }
+    .arrow.next { right: 14px; }
+
+    /* ── Dot indicators ───────────────────────────── */
+    .dots {
+      display: flex;
+      gap: 8px;
+      margin-top: 1.4rem;
+    }
+
+    .dot {
+      width: 28px;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.22);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .dot.active {
+      background: rgba(255,255,255,0.88);
+      transform: scaleX(1.18);
+    }
+
+    /* ── Progress bar ─────────────────────────────── */
+    .progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.75);
+      width: 0%;
+      z-index: 5;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── Responsive ───────────────────────────────── */
+    @media (max-width: 480px) {
+      .arrow { width: 36px; height: 36px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Image Slider</h1>
+
+  <div class="slider-wrap" id="slider">
+    <div class="slider-track" id="track"></div>
+    <button class="arrow prev" id="prevBtn" aria-label="Previous slide">&#8592;</button>
+    <button class="arrow next" id="nextBtn" aria-label="Next slide">&#8594;</button>
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <script>
+  (function () {
+    const SLIDES    = [
+    { src: `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBmMGMyOSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMzAyYjYzIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjQyNDNlIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+PHRleHQgeD0iNjAwIiB5PSIzMTAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjcyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTIpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4wMTwvdGV4dD48L3N2Zz4=`, caption: `Midnight Gradient — Slide One` },
+    { src: `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjEiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzExOTk4ZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzM4ZWY3ZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjYwMCIgeT0iMzEwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0icmdiYSgwLDAsMCwwLjEwKSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDI8L3RleHQ+PC9zdmc+`, caption: `Emerald Wave — Slide Two` },
+    { src: `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMSIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3OTcxZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZDIwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjYwMCIgeT0iMzEwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0icmdiYSgwLDAsMCwwLjEwKSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDM8L3RleHQ+PC9zdmc+`, caption: `Golden Hour — Slide Three` },
+    { src: `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2NiMmQzZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2VmNDczYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0idXJsKCNnKSIvPjx0ZXh0IHg9IjYwMCIgeT0iMzEwIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI3MiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEyKSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MDQ8L3RleHQ+PC9zdmc+`, caption: `Crimson Dusk — Slide Four` },
+  ];
+    const AUTO_MS   = 4000;   // 0 = disabled
+
+    const track     = document.getElementById('track');
+    const dotsWrap  = document.getElementById('dots');
+    const progressEl= document.getElementById('progress');
+    let current     = 0;
+    let timer       = null;
+    let progTimer   = null;
+
+    /* ── Build DOM ── */
+    SLIDES.forEach((s, i) => {
+      // Slide
+      const slide = document.createElement('div');
+      slide.className = 'slide' + (i === 0 ? ' active' : '');
+
+      const img = document.createElement('img');
+      img.src = s.src;
+      img.alt = s.caption || `Slide ${i + 1}`;
+      img.loading = i === 0 ? 'eager' : 'lazy';
+      slide.appendChild(img);
+
+      if (s.caption) {
+        const cap = document.createElement('div');
+        cap.className = 'caption';
+        cap.textContent = s.caption;
+        slide.appendChild(cap);
+      }
+
+      track.appendChild(slide);
+
+      // Dot
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    /* ── Navigate ── */
+    function goTo(idx) {
+      const slides = track.querySelectorAll('.slide');
+      const dots   = dotsWrap.querySelectorAll('.dot');
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (idx + SLIDES.length) % SLIDES.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      track.style.transform = `translateX(${-current * 100}%)`;
+      if (AUTO_MS) resetProgress();
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+    /* ── Keyboard ── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    /* ── Swipe ── */
+    let touchStartX = null;
+    const slider = document.getElementById('slider');
+    slider.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive: true});
+    slider.addEventListener('touchend', e => {
+      if (touchStartX === null) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+      touchStartX = null;
+    }, {passive: true});
+
+    /* ── Auto-play & progress bar ── */
+    function resetProgress() {
+      clearInterval(timer);
+      clearInterval(progTimer);
+      progressEl.style.transition = 'none';
+      progressEl.style.width = '0%';
+      void progressEl.offsetWidth; // reflow
+      progressEl.style.transition = `width ${AUTO_MS}ms linear`;
+      progressEl.style.width = '100%';
+      timer = setInterval(() => goTo(current + 1), AUTO_MS);
+    }
+
+    if (AUTO_MS) resetProgress();
+
+    /* Pause on hover */
+    slider.addEventListener('mouseenter', () => {
+      clearInterval(timer);
+      clearInterval(progTimer);
+      progressEl.style.transition = 'none';
+    });
+    slider.addEventListener('mouseleave', () => {
+      if (AUTO_MS) resetProgress();
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!-- Project Image Slider -->
+<div class="project-slider-wrap">
+  <div class="slider-track" id="projectSliderTrack">
+    <div class="slider-slide active">
+      <img src="{{ site.baseurl }}/assets/slider/IMG_3970.jpg" alt="STOGUASAI project - construction work">
+      <div class="slider-caption">Statyba Procesas</div>
+    </div>
+    <div class="slider-slide">
+      <img src="{{ site.baseurl }}/assets/slider/IMG_3974.jpg" alt="STOGUASAI project - completed building">
+      <div class="slider-caption">Užbaigtas Projektas</div>
+    </div>
+    <div class="slider-slide">
+      <img src="{{ site.baseurl }}/assets/slider/IMG_3975.jpg" alt="STOGUASAI project - structural work">
+      <div class="slider-caption">Struktūriniai Darbai</div>
+    </div>
+    <div class="slider-slide">
+      <img src="{{ site.baseurl }}/assets/slider/IMG_3979.jpg" alt="STOGUASAI project - final details">
+      <div class="slider-caption">Baigiamieji Darbai</div>
+    </div>
+    <div class="slider-slide">
+      <img src="{{ site.baseurl }}/assets/slider/IMG_3991.jpg" alt="STOGUASAI project - team work">
+      <div class="slider-caption">Komandos Darbas</div>
+    </div>
+    <div class="slider-slide">
+      <img src="{{ site.baseurl }}/assets/slider/IMG_4062.jpeg" alt="STOGUASAI project - finished site">
+      <div class="slider-caption">Galutinis Rezultatas</div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button class="slider-arrow slider-prev" id="projectSliderPrev" aria-label="Ankstesnis slydis">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="slider-arrow slider-next" id="projectSliderNext" aria-label="Kitas slydis">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+
+  <!-- Dot Indicators -->
+  <div class="slider-dots" id="projectSliderDots"></div>
+
+  <!-- Progress Bar -->
+  <div class="slider-progress" id="projectSliderProgress"></div>
+</div>
+
+<style>
+  .project-slider-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--light-gray);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .slider-track {
+    display: flex;
+    height: 100%;
+    will-change: transform;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+
+  .slider-slide {
+    flex: 0 0 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slider-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+    transform: scale(1.02);
+  }
+
+  .slider-slide.active img {
+    transform: scale(1);
+  }
+
+  .slider-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem 1rem;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.85), transparent);
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s 0.2s ease, transform 0.5s 0.2s ease;
+  }
+
+  .slider-slide.active .slider-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(200, 168, 75, 0.4);
+    border-radius: 50%;
+    background: rgba(10, 10, 10, 0.5);
+    color: var(--gold);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .slider-arrow:hover {
+    background: rgba(10, 10, 10, 0.8);
+    border-color: var(--gold);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .slider-prev {
+    left: 1.5rem;
+  }
+
+  .slider-next {
+    right: 1.5rem;
+  }
+
+  .slider-dots {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .slider-dot.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.2);
+  }
+
+  .slider-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--gold);
+    width: 0%;
+    z-index: 5;
+    transition: width 4s linear;
+  }
+
+  @media (max-width: 768px) {
+    .project-slider-wrap {
+      aspect-ratio: 3/2;
+    }
+
+    .slider-arrow {
+      width: 40px;
+      height: 40px;
+    }
+
+    .slider-prev {
+      left: 1rem;
+    }
+
+    .slider-next {
+      right: 1rem;
+    }
+
+    .slider-caption {
+      padding: 1rem 1.5rem 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .slider-dots {
+      bottom: 1rem;
+      gap: 8px;
+    }
+  }
+</style>
+
+<script>
+  (function initProjectSlider() {
+    const track = document.getElementById('projectSliderTrack');
+    const prevBtn = document.getElementById('projectSliderPrev');
+    const nextBtn = document.getElementById('projectSliderNext');
+    const dotsContainer = document.getElementById('projectSliderDots');
+    const progressBar = document.getElementById('projectSliderProgress');
+
+    if (!track) return;
+
+    const slides = track.querySelectorAll('.slider-slide');
+    let current = 0;
+    let autoPlayTimer = null;
+    const AUTO_PLAY_DELAY = 5000;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Eiti į slydį ${i + 1}`);
+      dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function updateSlides() {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === current);
+      });
+
+      dotsContainer.querySelectorAll('.slider-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+        dot.setAttribute('aria-current', i === current ? 'true' : 'false');
+      });
+
+      track.style.transform = `translateX(-${current * 100}%)`;
+    }
+
+    function goToSlide(index) {
+      current = (index + slides.length) % slides.length;
+      updateSlides();
+      resetAutoPlay();
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlayTimer);
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '0%';
+      void progressBar.offsetWidth;
+      progressBar.style.transition = `width ${AUTO_PLAY_DELAY}ms linear`;
+      progressBar.style.width = '100%';
+      autoPlayTimer = setInterval(() => goToSlide(current + 1), AUTO_PLAY_DELAY);
+    }
+
+    prevBtn.addEventListener('click', () => goToSlide(current - 1));
+    nextBtn.addEventListener('click', () => goToSlide(current + 1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goToSlide(current - 1);
+      if (e.key === 'ArrowRight') goToSlide(current + 1);
+    });
+
+    // Touch/Swipe support
+    let touchStartX = 0;
+    const sliderWrap = document.querySelector('.project-slider-wrap');
+
+    sliderWrap.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    sliderWrap.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) goToSlide(current + (diff > 0 ? 1 : -1));
+    }, { passive: true });
+
+    // Pause on hover
+    sliderWrap.addEventListener('mouseenter', () => {
+      clearInterval(autoPlayTimer);
+      progressBar.style.transition = 'none';
+    });
+
+    sliderWrap.addEventListener('mouseleave', () => {
+      resetAutoPlay();
+    });
+
+    // Start autoplay
+    resetAutoPlay();
+  })();
+</script>
