@@ -1353,7 +1353,7 @@ ul { list-style: none; }
 .service-icon,
 .contact-item-icon,
 .testimonial-avatar {
-  font-size: inherit;
+  /* font-size: inherit; */
   font-family: Arial, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
