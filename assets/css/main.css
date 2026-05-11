@@ -378,7 +378,7 @@ ul { list-style: none; }
 }
 .contact-item { display: flex; gap: 1rem; margin-bottom: 2rem; }
 .contact-item-icon { font-size: 1.5rem; flex-shrink: 0; }
-.contact-item h4 { font-weight: 700; margin-bottom: 0.2rem; }
+.contact-item h4 { font-weight: 700; margin-bottom: 0.2rem; color: rgb(73, 73, 73); }
 .contact-item p { color: var(--gray); }
 
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
