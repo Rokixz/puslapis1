@@ -832,7 +832,7 @@ ul { list-style: none; }
 .slide-dots {
     position: absolute;
     bottom: 0.8rem;
-    left: 30%;
+    left: 32%;
     transform: translateX(-50%);
     display: inline-flex;
     gap: 1%;
