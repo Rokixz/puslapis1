@@ -280,6 +280,7 @@ ul { list-style: none; }
   background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: 1.5rem;
+  pointer-events: none;
 }
 .project-overlay h3 { font-family: var(--font-display); font-size: clamp(1.1rem, 3vw, 1.5rem); color: var(--white); }
 .project-overlay span { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; }
@@ -1506,4 +1507,60 @@ select:focus-visible {
   .section {
     page-break-inside: avoid;
   }
+}
+
+/* ===== GLIGHTBOX STYLING ===== */
+.glightbox {
+  cursor: pointer;
+}
+
+/* Ensure glightbox modal has proper z-index */
+.glightbox-container {
+  z-index: 10000;
+}
+
+.gslide {
+  z-index: 10000;
+}
+
+.gslide-overlay {
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.96);
+}
+
+.gslide-title,
+.gslide-description {
+  color: #fff;
+}
+
+.gclose {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.gclose:hover {
+  opacity: 1;
+}
+
+.gnext,
+.gprev {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  padding: 0.5rem;
+}
+
+.gnext:hover,
+.gprev:hover {
+  opacity: 1;
+}
 }

@@ -250,16 +250,37 @@ if ('IntersectionObserver' in window) {
 }
 
 // ===== LIGHTBOX INITIALIZATION =====
-document.addEventListener('DOMContentLoaded', () => {
-  const lightbox = GLightbox({
-    selector: '.glightbox',
-    touchNavigation: true,
-    loop: true,
-    autoplayVideos: true,
-    cssEfects: {
-      fade: true,
-      zoom: true,
-      slide: false
-    }
-  });
+function initLightbox() {
+  if (typeof GLightbox !== 'undefined') {
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: false,
+      openEffect: 'zoom',
+      closeEffect: 'zoom',
+      slideEffect: 'slide'
+    });
+  } else {
+    console.warn('GLightbox library not loaded');
+  }
+}
+
+// Initialize on DOMContentLoaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLightbox);
+} else {
+  // DOM is already loaded
+  initLightbox();
+}
+
+// Also initialize after dynamic content loads
+window.addEventListener('load', () => {
+  if (typeof GLightbox !== 'undefined') {
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true
+    });
+  }
 });
