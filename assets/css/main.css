@@ -2,12 +2,13 @@
 :root {
   --black: #0a0a0a;
   --dark: #141414;
-  --gray: #585858;
+  --gray: #3d3d3d;
   --light-gray: #f4f4f2;
   --white: #ffffff;
   --gold: #c8a84b;
   --gold-light: #e2c97e;
   --text: #1a1a1a;
+  --text-secondary: #4a4a4a;
   --font-display: 'Bebas Neue', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --header-h: 80px;
@@ -18,7 +19,7 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
-  color: #353535;
+  color: #2a2a2a;
   background: var(--white);
   line-height: 1.6;
 }
@@ -224,7 +225,7 @@ ul { list-style: none; }
   color: var(--gold); line-height: 1;
 }
 .hero-stats .stat-label {
-  color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: #555; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
 }
 
 /* ===== SECTIONS ===== */
@@ -245,7 +246,7 @@ ul { list-style: none; }
   margin-bottom: 1rem;
 }
 .section-title.light { color: var(--white); }
-.section-sub { color: var(--gray); max-width: 520px; margin-bottom: 3rem; font-size: clamp(0.9rem, 2vw, 1rem); }
+.section-sub { color: #4a4a4a; max-width: 520px; margin-bottom: 3rem; font-size: clamp(0.9rem, 2vw, 1rem); }
 
 /* ===== SERVICES GRID ===== */
 .services-grid {
@@ -263,7 +264,7 @@ ul { list-style: none; }
 .service-card:hover { border-color: var(--gold); transform: translateY(-4px); }
 .service-icon { font-size: 2.2rem; margin-bottom: 1rem; }
 .service-card h3 { font-family: var(--font-display); font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 0.5rem; }
-.service-card p { color: var(--gray); font-size: 0.95rem; }
+.service-card p { color: #4a4a4a; font-size: 0.95rem; }
 
 /* ===== PROJECTS GRID ===== */
 .projects-grid {
@@ -302,7 +303,7 @@ ul { list-style: none; }
 .team-card:hover .team-photo { filter: grayscale(0); }
 .team-card h3 { font-weight: 700; margin-bottom: 0.2rem; }
 .team-card span { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
-.team-card p { color: var(--gray); font-size: 0.9rem; margin-top: 0.5rem; }
+.team-card p { color: #4a4a4a; font-size: 0.9rem; margin-top: 0.5rem; }
 
 /* ===== DARK SECTION ===== */
 .section-dark { background: var(--dark); }
@@ -357,7 +358,7 @@ ul { list-style: none; }
 
 .value-item p {
   font-size: 0.9rem;
-  color: var(--gray);
+  color: #3d3d3d;
   line-height: 1.5;
 }
 
@@ -380,7 +381,7 @@ ul { list-style: none; }
 .contact-item { display: flex; gap: 1rem; margin-bottom: 2rem; }
 .contact-item-icon { font-size: 1.5rem; flex-shrink: 0; }
 .contact-item h4 { font-weight: 700; margin-bottom: 0.2rem; color: rgb(73, 73, 73); }
-.contact-item p { color: var(--gray); }
+.contact-item p { color: #3d3d3d; }
 
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-group { margin-bottom: 1rem; }
@@ -449,7 +450,7 @@ ul { list-style: none; }
   grid-template-columns: 1fr 1fr;
   gap: 5rem; align-items: center;
 }
-.intro-text p { color: #555; line-height: 1.75; }
+.intro-text p { color: #3d3d3d; line-height: 1.75; }
 .intro-images { position: relative; }
 .intro-img-main { border-radius: 4px; overflow: hidden; }
 .intro-img-main img { width: 100%; height: 420px; object-fit: cover; }
@@ -522,7 +523,7 @@ ul { list-style: none; }
   border-radius: 4px; border-left: 3px solid var(--gold);
 }
 .testimonial-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
-.testimonial-card > p { color: #555; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+.testimonial-card > p { color: #3d3d3d; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
 .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
 .testimonial-avatar {
   width: 42px; height: 42px; border-radius: 50%;
@@ -531,7 +532,7 @@ ul { list-style: none; }
   font-weight: 700; font-size: 0.8rem; flex-shrink: 0;
 }
 .testimonial-author strong { display: block; font-size: 0.9rem; }
-.testimonial-author span { font-size: 0.8rem; color: var(--gray); }
+.testimonial-author span { font-size: 0.8rem; color: #4a4a4a; }
 
 /* ===== CTA BANNER ===== */
 .cta-banner { position: relative; padding: 6rem 2rem; text-align: center; overflow: hidden; }
@@ -902,7 +903,7 @@ ul { list-style: none; }
 }
 
 .service-item p {
-  color: var(--gray);
+  color: #3d3d3d;
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -1157,6 +1158,47 @@ ul { list-style: none; }
 
   .value-item p {
     font-size: 0.85rem;
+    color: #3d3d3d;
+  }
+
+  /* ===== TEXT VISIBILITY IMPROVEMENTS ===== */
+  .section-sub {
+    font-size: clamp(0.9rem, 4vw, 1rem);
+    color: #4a4a4a;
+  }
+
+  .section-title {
+    color: #1a1a1a;
+  }
+
+  .service-card p,
+  .team-card p,
+  .value-item p {
+    color: #3d3d3d;
+    font-size: 0.9rem;
+  }
+
+  .contact-item p {
+    color: #3d3d3d;
+    font-size: 0.9rem;
+  }
+
+  .form-group label {
+    color: #1a1a1a;
+    font-size: 0.85rem;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #8a8a8a;
+  }
+
+  h2, h3, h4, h5, h6 {
+    color: #1a1a1a;
+  }
+
+  p {
+    color: #2a2a2a;
   }
 }
 
@@ -1428,6 +1470,27 @@ select:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+  /* Extra small device text improvements */
+  p {
+    color: #2a2a2a;
+    font-size: 0.95rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #1a1a1a;
+  }
+
+  .section-title {
+    color: #1a1a1a;
+    font-size: clamp(1.3rem, 6vw, 2rem);
+  }
+
+  .section-sub {
+    color: #4a4a4a;
+    font-size: 0.9rem;
+  }
 }
 
 /* High contrast mode support */
