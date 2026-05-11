@@ -18,7 +18,7 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
-  color: var(--text);
+  color: var(--text) #424242;
   background: var(--white);
   line-height: 1.6;
 }
