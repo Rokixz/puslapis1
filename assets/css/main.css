@@ -837,7 +837,7 @@ ul { list-style: none; }
     display: inline-flex;
     gap: 1%;
     z-index: 10;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
 }
 .slide-dot {
   width: 5px; height: 5px; border-radius: 5%;
