@@ -55,7 +55,7 @@ ul { list-style: none; }
   /* display: flex; align-items: center; gap: 0.6rem;
   color: var(--white); */
    */
-  padding: inherit;
+
   font-size: 1.2rem;
   color: var(--gold);
   background-image: url(https://stoguasai.lt/assets/logo.png);
@@ -1419,6 +1419,7 @@ a {
   color: inherit;
   position: relative;
   -webkit-tap-highlight-color: transparent;
+  padding: inherit;
 }
 
 a:focus-visible {
