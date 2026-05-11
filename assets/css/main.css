@@ -824,9 +824,20 @@ ul { list-style: none; }
 .slide-prev { left: 1.5rem; }
 .slide-next { right: 1.5rem; }
 
-.slide-dots {
+/* .slide-dots {
   position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
   display: flex; gap: 4px; z-index: 10;
+} */
+
+.slide-dots {
+    position: absolute;
+    bottom: 0.8rem;
+    left: 30%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    gap: 1%;
+    z-index: 10;
+    flex-direction: row-reverse;
 }
 .slide-dot {
   width: 5px; height: 5px; border-radius: 5%;
