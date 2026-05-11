@@ -228,7 +228,10 @@ ul { list-style: none; }
 }
 
 /* ===== SECTIONS ===== */
-.section { padding: clamp(2.5rem, 8vw, 5rem) 2rem; }
+.section { 
+  padding: clamp(2.5rem, 8vw, 5rem) 2rem; 
+  background: var(--white);
+}
 .section-inner { max-width: 1300px; margin: 0 auto; }
 .section-tag {
   display: inline-block; color: var(--gold);
@@ -362,6 +365,16 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 4rem;
+}
+.contact-info {
+  background: var(--light-gray);
+  padding: 2rem;
+  border-radius: 4px;
+}
+.contact-form {
+  background: var(--light-gray);
+  padding: 2rem;
+  border-radius: 4px;
 }
 .contact-item { display: flex; gap: 1rem; margin-bottom: 2rem; }
 .contact-item-icon { font-size: 1.5rem; flex-shrink: 0; }
